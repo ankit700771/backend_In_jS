@@ -21,3 +21,5 @@ router.route("/register").post(
 );
 
 export default router;
+
+// we import router as useRoutes

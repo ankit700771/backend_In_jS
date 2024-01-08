@@ -26,7 +26,6 @@ const registerUser = asyncHandler(async (req, res) => {
 
   //get user data
   const { fullName, email, username, password } = req.body;
-  console.log("Email", email);
 
   //check fullName email username password is empty or not
   // apply sigle if else or
@@ -43,7 +42,7 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 
   // here we check that user allready exit or not based on username or email
-  const exitedUser = User.findOne({
+  const exitedUser = await User.findOne({
     //this is a syntax for apply or operator
     $or: [{ username }, { email }],
   });
@@ -62,7 +61,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   //checking avatar is present or not
   if (!avatarLocalPath) {
-    throw new ApiError(400, "Avatar file is required");
+    throw new ApiError(400, "Avatar file is are required");
   }
 
   //upload on cloudinary
@@ -71,7 +70,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   //check avatar hai ya nhi
   if (!avatar) {
-    throw new ApiError(400, "Avatar file is required");
+    throw new ApiError(400, "avatar file is required");
   }
 
   //create entry into database
