@@ -57,7 +57,21 @@ const registerUser = asyncHandler(async (req, res) => {
 
   // files access are get by multer package and getting path
   const avatarLocalPath = req.files?.avatar[0]?.path;
-  const coverImageLocalPath = req.files?.coverImage[0]?.path;
+
+  //req.files return a arrya containing objects
+
+  //without check karna hai to ya kar lo
+  //const coverImageLocalPath = req.files?.coverImage[0]?.path;
+
+  //check coverImage hai ya nhi
+  let coverImageLocalPath;
+  if (
+    req.files &&
+    Array.isArray(req.files.coverImage) && // this check that array hai ya nhi
+    req.files.coverImage.length > 0
+  ) {
+    coverImageLocalPath = req.files.coverImage[0].path;
+  }
 
   //checking avatar is present or not
   if (!avatarLocalPath) {
