@@ -1,3 +1,4 @@
+// This class help how to send the response
 class ApiResponse {
   constructor(statusCode, data, message = "Success") {
     (this.statusCode = statusCode),

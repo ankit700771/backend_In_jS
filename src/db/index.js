@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { DB_NAME } from "../constants.js";
 
+// this function when call it return a promiss
 const connectDB = async () => {
   try {
     const connectionInstance = await mongoose.connect(

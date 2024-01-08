@@ -3,10 +3,12 @@ import dotenv from "dotenv";
 import connectDB from "./db/index.js";
 import { app } from "../src/app.js";
 
+// this lines are only configure the path of a env file
 dotenv.config({
   path: "./env",
 });
 
+// here we recive a promiss that's why we use .then() and .catch method
 connectDB()
   .then(() => {
     app.listen(process.env.PORT || 8000, () => {

@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 
 const app = express();
 
+//cors are used to allow the origin means who can access
 app.use(
   cors({
     origin: process.env.CORS_ORIGIN,
@@ -11,16 +12,21 @@ app.use(
   })
 );
 
+//for getting data in json format
 app.use(express.json({ limit: "16kb" }));
 
+//getting data from the url
 app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 
+//save fils in public folder
 app.use(express.static("public"));
 
+//for handling cookie
 app.use(cookieParser());
 
 //routes
 
+// we assign own name when we use export defoult
 import userRouter from "./routes/user.routes.js";
 
 //routes declaration
